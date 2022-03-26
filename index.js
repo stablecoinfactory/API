@@ -23,6 +23,7 @@ async function token() {
 
   const data = JSON.stringify({
     totalSupply: tokensupply,
+    circulatingSupply: tokensupply,
   })
 
   fs.writeFile('./dist/token.json', data, (err) => {
