@@ -1,0 +1,28 @@
+
+name: API
+on:
+  schedule:
+    - cron: '3/12 * * * *'
+
+jobs:
+ build-and-deploy:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout 🛎️
+     uses: actions/checkout@v2.3.1
+     with:
+      persist-credentials: false
+
+   - name: Install
+     run: |
+      npm i
+
+   - name: Build
+     run: |
+      node index.js
+      
+   - name: Deploy 🚀
+     uses: JamesIves/github-pages-deploy-action@4.1.7
+     with:
+        branch: gh-pages
+        folder: dist
